@@ -85,7 +85,7 @@ App
   * Test for changes to the state
 
 #### Documentation  
-Add your Travis badge to the top of your README and write a description of the project. 
+Add your Travis badge to the top of your README (even if your build is failing) and write a description of the project. 
 
 #### Stretch Goals
 * Read [Enzyme testing docs](https://github.com/airbnb/enzyme/blob/master/docs/api/mount.md) and write more tests for your components.
