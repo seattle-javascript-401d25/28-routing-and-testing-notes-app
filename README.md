@@ -6,7 +6,7 @@
   * Work in a branch on your fork called `lab-28`
   * Submit a pull request to your repository
   * Submit a link to your pull request on canvas
-  * Set up Travis CI on your repo
+  * Set up Travis CI and update your repo to utilize the [Travis CI Github app](https://github.com/marketplace/travis-ci)
   * Submit a question, observation, and how long you spent on Canvas  
   * DO NOT reuse the same exact SCSS partials and variables in lecture code. Change colors, sizes, and fonts around and find your own branding. **AUTOMATIC 0's will be given for using the same SCSS as lecture code**. 
 
