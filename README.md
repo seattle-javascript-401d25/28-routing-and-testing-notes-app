@@ -92,3 +92,7 @@ Add your Travis badge to the top of your README (even if your build is failing) 
 
 #### Stretch Goals
 * Read [Enzyme testing docs](https://github.com/airbnb/enzyme/blob/master/docs/api/mount.md) and write more tests for your components.
+* Create an `updateNote` handler that updates a note based off its `_id`. 
+* Utilize local storage for persistence of your data
+* Find a way to use a hashmap in this lab
+* Make it pretty with SCSS
