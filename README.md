@@ -8,7 +8,7 @@
   * Submit a link to your pull request on canvas
   * Set up Travis CI and update your repo to utilize the [Travis CI Github app](https://github.com/marketplace/travis-ci). *Use the free instsallation.*
   * Submit a question, observation, and how long you spent on Canvas  
-  * DO NOT reuse the same exact SCSS partials and variables in lecture code. Change colors, sizes, and fonts around and find your own branding. **AUTOMATIC 0's will be given for using the same SCSS as lecture code**. 
+  * DO NOT reuse the same exact SCSS styling as lecture code. Change colors, sizes, and fonts around and find your own branding. **AUTOMATIC 0's will be given for using the same SCSS as lecture code**. 
 
 ## Requirements  
 #### Configuration  
@@ -56,14 +56,14 @@ App
 ###### Dashboard Component 
 * The Dashboard component should manage the entire **application state**
 * The state should contain a notes array
-* It should have a bound `addNote(note)` method that adds a note to `state.notes`
+* It should have a `addNote(note)` method that adds a note to `state.notes`
   * each note that gets added should have the following data
     * `_id`: always should contain the result of `uuid()`
     * `editing`: false by default
     * `completed`: false by default
     * `content`: user provided content
     * `title`: user provided title
-* It should have a bound `removeNote(note)` method that removes a note from `state.notes` based on its `id`
+* It should have a `removeNote(note)` method that removes a note from `state.notes` based on its `id`
 
 ###### NoteForm Component
 * `onSubmit` the NoteForm should add a note to the application state
@@ -83,6 +83,9 @@ App
 * Test NoteCreateForm
   * Test the initial state
   * Test for changes to the state
+ 
+ #### SCSS
+ * Create a `_base`, `_vars`, and `_reset` stylesheet in your `style` directory. The `_reset` can be the same as lecture code. However, do NOT copy lecture code's styles and apply your own styling to your app. 
 
 #### Documentation  
 Add your Travis badge to the top of your README (even if your build is failing) and write a description of the project. 
