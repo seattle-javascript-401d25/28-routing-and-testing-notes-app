@@ -10,11 +10,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "eslint --fix **/*.js && jest --coverage --runInBand",
+    "test": "eslint . && jest --coverage --runInBand",
     "tests": "jest --coverage --runInBand",
     "watch": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "lint": "eslint --fix **/*.js"
+    "lint": "eslint --fix ."
   },
   "keywords": [],
   "author": "",

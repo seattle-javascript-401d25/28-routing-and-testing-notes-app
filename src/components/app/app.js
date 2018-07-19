@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Link } from 'react-router-dom';
 // import Dashboard from '../dashboard/dashboard';
 // import Landing from '../landing/landing';
 // import NoteEdit from '../note-edit/note-edit';
