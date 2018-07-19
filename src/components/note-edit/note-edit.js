@@ -4,10 +4,24 @@ import PropTypes from 'prop-types';
 export default class NoteEdit extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      content: props.mode !== 'create' ? props.note.content : '',
-      title: props.mode !== 'create' ? props.note.title : '',
-    };
+    console.log('//// NoteEdit props.mode', props.mode);
+    console.log('//// props.note', props.note);
+    if (props.mode === 'edit') {
+      this.state = { ...props.note, editing: true };
+    } else {
+      this.state = {
+        title: '',
+        content: '',
+        editing: false,
+      };
+    }
+    console.log('//// this.state', this.state);
+    // this.state = {
+    //   content: props.mode !== 'create' ? props.note.content : '',
+    //   title: props.mode !== 'create' ? props.note.title : '',
+    //   _id: props.mode !== 'create' ? props.note._id : '',
+    //   editing: props.mode === 'edit',
+    // };
   }
 
   handleChange = (event) => {
@@ -23,7 +37,7 @@ export default class NoteEdit extends React.Component {
   }
 
   render() {
-    // console.log('!!!! NoteEdit, props.note', this.props.note);
+    console.log('!!!! NoteEdit, this.state', this.state);
     return (
       <div className="note-edit">
         {this.props.mode === 'edit' ? <h2>Note Editor</h2> : <h2>Create a Note</h2>}

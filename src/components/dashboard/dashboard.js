@@ -11,6 +11,7 @@ export default class Dashboard extends React.Component {
 
     this.state = {
       allNotes: localStorage.allNotes ? JSON.parse(localStorage.allNotes) : [],
+      note: {},
       error: false,
       action: null,
     };
@@ -18,17 +19,27 @@ export default class Dashboard extends React.Component {
 
   addNote = (note) => {
     console.log('aaaa addNote', note);
-    this.setState({ action: null });
     if (note.title === '') {
       return this.setState({ error: true });
     }
-
-    note.createdOn = new Date();
-    note._id = uuid();
+    this.setState({ error: false });
+    let { allNotes } = this.state;
+    console.log('aaaa allNotes at the top of addNote', allNotes);
+    if (note.editing) {
+      allNotes = this.state.allNotes.filter(n => n._id !== note._id);
+      console.log('aaaa editing: addNote allNotes post filter', allNotes);
+    } else {
+      note.createdOn = new Date();
+      console.log('aaaaa creating: ADDING UUID to note!');
+      note._id = uuid();
+    }
     note.editing = false;
-    const allNotes = [note].concat(this.state.allNotes);
+    console.log('aaaaa note', note);
+    console.log('aaaa allNotes', allNotes);
+    allNotes = allNotes.length ? [note].concat(allNotes) : [note];
+    console.log('aaaa addNote post concat', allNotes);
     localStorage.setItem('allNotes', JSON.stringify(allNotes));
-    return this.setState({ allNotes });
+    return this.setState({ allNotes, action: null });
   }
 
   handleCreateNewNote = () => {
@@ -36,9 +47,10 @@ export default class Dashboard extends React.Component {
     return this.setState({ action: 'create' });
   }
 
-  handleEditNote = () => {
-    console.log('hhhhh handleEditNote');
-    return this.setState({ action: 'edit' });
+  handleEditNote = (id) => {
+    console.log('hhhhh handleEditNote', id);
+    const note = this.state.allNotes.filter(n => n._id === id)[0];
+    return this.setState({ note, action: 'edit' });
   }
 
   handleDeleteNote = (id) => {
@@ -58,10 +70,11 @@ export default class Dashboard extends React.Component {
         <div>
           <button onClick={this.handleCreateNewNote}>Create a New Note</button>
         </div>
+        {console.log('!!! dashboard this.state.action', this.state.action)}
         <div>
-          {this.state.action === 'create'
-            ? <NoteEdit mode="create" addNote={this.addNote} delNote={this.handleDeleteNote}/>
-            : <NoteList addNote={this.addNote} delNote={this.handleDeleteNote} notes={this.state.allNotes} />
+          {this.state.action !== null
+            ? <NoteEdit mode={this.state.action} addNote={this.addNote} note={this.state.note}/>
+            : <NoteList addNote={this.addNote} delNote={this.handleDeleteNote} editNote={this.handleEditNote} notes={this.state.allNotes} /> 
           }
         </div>
       </div>

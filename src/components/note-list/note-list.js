@@ -13,13 +13,11 @@ export default class NoteList extends React.Component {
     console.log('eeee handleEditNote. event.target.name:', event.target.name);
     const mode = event.target.name === 'edit' ? 'edit' : 'delete';
     if (mode === 'delete') {
-      console.log('... deleting note', event.target.id);
+      console.log('ddd deleting note', event.target.id);
       return this.props.delNote(event.target.id);
     }
     return (
-      <div>
-      <NoteEdit mode={mode} note={{ title: 'EDIT', content: 'EDIT' }} addNote={this.props.addNote} />
-      </div>
+      this.props.editNote(event.target.id)
     );
   }
 
@@ -43,4 +41,5 @@ NoteList.propTypes = {
   addNote: PropTypes.func,
   notes: PropTypes.array,
   delNote: PropTypes.func,
+  editNote: PropTypes.func,
 };
