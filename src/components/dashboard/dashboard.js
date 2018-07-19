@@ -10,22 +10,7 @@ export default class Dashboard extends React.Component {
     super(props);
 
     this.state = {
-      allNotes: [{ // mock data for one note
-        _id: 'THIS-WOULD-BE-UUID',
-        editing: false,
-        completed: false,
-        content: 'This is the content of this note!',
-        title: 'The Note Title',
-        createdOn: new Date(),
-      },
-      { // mock data for one note
-        _id: 'THIS-WOULD-BE-UUID2',
-        editing: false,
-        completed: false,
-        content: 'This is the content of another!',
-        title: 'The Other Note Title',
-        createdOn: new Date(),
-      }],
+      allNotes: localStorage.allNotes ? JSON.parse(localStorage.allNotes) : [],
       error: false,
       edit: false,
       create: false,
@@ -41,12 +26,16 @@ export default class Dashboard extends React.Component {
 
     note.createdOn = new Date();
     note._id = uuid();
-    return this.setState((previousState) => {
-      return {
-        allNotes: [...previousState.allNotes, note],
-        error: false,
-      };
-    });
+    note.editing = false;
+    const allNotes = [note].concat(this.state.allNotes);
+    localStorage.setItem('allNotes', JSON.stringify(allNotes));
+    return this.setState({ allNotes });
+    // return this.setState((previousState) => {
+    //   return {
+    //     allNotes: [...previousState.allNotes, note],
+    //     error: false,
+    //   };
+    // });
   }
 
   handleCreateNewNote = () => {
@@ -63,7 +52,7 @@ export default class Dashboard extends React.Component {
         </div>
         <div>
           {this.state.create
-            ? <NoteEdit note={{}} addNote={this.addNote} />
+            ? <NoteEdit mode="create" addNote={this.addNote} />
             : <NoteList notes={this.state.allNotes} />
           }
         </div>
