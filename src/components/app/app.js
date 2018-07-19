@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import Dashboard from '../dashboard/dashboard';
-import Landing from '../landing/landing';
+// import Dashboard from '../dashboard/dashboard';
+// import Landing from '../landing/landing';
+// import NoteEdit from '../note-edit/note-edit';
+import Router from '../router/router';
 
 import './app.scss';
 
@@ -19,16 +21,7 @@ export default function App() {
               </ul>
             </nav>
           </header>
-          <Route
-            exact
-            path="/"
-            component={ Landing }
-          />
-          <Route
-            exact
-            path="/dashboard"
-            component={ Dashboard }
-          />
+          <Router />
         </div>
       </BrowserRouter>
     </div>
