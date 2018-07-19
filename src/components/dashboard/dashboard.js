@@ -12,14 +12,13 @@ export default class Dashboard extends React.Component {
     this.state = {
       allNotes: localStorage.allNotes ? JSON.parse(localStorage.allNotes) : [],
       error: false,
-      edit: false,
-      create: false,
+      action: null,
     };
   }
 
   addNote = (note) => {
     console.log('aaaa addNote', note);
-    this.setState({ create: false, edit: false });
+    this.setState({ action: null });
     if (note.title === '') {
       return this.setState({ error: true });
     }
@@ -30,17 +29,26 @@ export default class Dashboard extends React.Component {
     const allNotes = [note].concat(this.state.allNotes);
     localStorage.setItem('allNotes', JSON.stringify(allNotes));
     return this.setState({ allNotes });
-    // return this.setState((previousState) => {
-    //   return {
-    //     allNotes: [...previousState.allNotes, note],
-    //     error: false,
-    //   };
-    // });
   }
 
   handleCreateNewNote = () => {
     console.log('hhhhh handleCreateNewNote');
-    return this.setState({ create: true, edit: false });
+    return this.setState({ action: 'create' });
+  }
+
+  handleEditNote = () => {
+    console.log('hhhhh handleEditNote');
+    return this.setState({ action: 'edit' });
+  }
+
+  handleDeleteNote = (id) => {
+    console.log('hhhhhh handleDeleteNote');
+    this.setState({ action: 'delete' });
+    const allNotes = this.state.allNotes.filter((note) => {
+      return note._id !== id;
+    });
+    localStorage.setItem('allNotes', JSON.stringify(allNotes));
+    return this.setState({ allNotes, action: null });
   }
 
   render() {
@@ -51,9 +59,9 @@ export default class Dashboard extends React.Component {
           <button onClick={this.handleCreateNewNote}>Create a New Note</button>
         </div>
         <div>
-          {this.state.create
-            ? <NoteEdit mode="create" addNote={this.addNote} />
-            : <NoteList notes={this.state.allNotes} />
+          {this.state.action === 'create'
+            ? <NoteEdit mode="create" addNote={this.addNote} delNote={this.handleDeleteNote}/>
+            : <NoteList addNote={this.addNote} delNote={this.handleDeleteNote} notes={this.state.allNotes} />
           }
         </div>
       </div>

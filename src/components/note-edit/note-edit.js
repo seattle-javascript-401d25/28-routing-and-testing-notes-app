@@ -5,8 +5,8 @@ export default class NoteEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: props.mode === 'edit' ? props.note.content : '',
-      title: props.mode === 'edit' ? props.note.title : '',
+      content: props.mode !== 'create' ? props.note.content : '',
+      title: props.mode !== 'create' ? props.note.title : '',
     };
   }
 
@@ -28,9 +28,7 @@ export default class NoteEdit extends React.Component {
       <div className="note-edit">
         {this.props.mode === 'edit' ? <h2>Note Editor</h2> : <h2>Create a Note</h2>}
         <form onSubmit={this.handleSubmit}>
-          {/* <input type="text" name="title" onChange={this.handleChange} value={this.props.mode === 'edit' ? this.props.note.title : this.state.note.title} /> */}
           <input type="text" name="title" value={this.state.title} onChange={this.handleChange} />
-          {/* <textarea name="content" value={this.state.content} onChange={this.handleChange} /> */}
           <textarea name="content" value={this.state.content} onChange={this.handleChange} />
           <button type="submit">Save</button> 
         </form>
