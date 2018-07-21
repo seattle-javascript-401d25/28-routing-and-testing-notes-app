@@ -1,6 +1,6 @@
 import React from 'react';
 import uuid from 'uuid/v4';
-import ExpenseForm from '../expense-form/expense-form';
+import ExpenseForm from '../note-create-form/note-create-form';
 import './dashboard.scss';
 
 export default class Dashboard extends React.Component {
@@ -38,7 +38,7 @@ export default class Dashboard extends React.Component {
               <li key={note._id}>
                 {note.title} : ${expense.price}
               </li>
-              <button className="note-remove" onClick =
+              
             );
           })
         }
@@ -46,11 +46,7 @@ export default class Dashboard extends React.Component {
     );
   }
 
-  removeNote(note) {
-    this.setState({
-      notes: this.notes.filter(())
-    })
-  }
+ 
 
   render() {
     return (

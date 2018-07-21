@@ -1,6 +1,6 @@
 import React from 'react';
 import uuid from 'uuid/v4';
-import ExpenseForm from '../expense-form/expense-form';
+import ExpenseForm from '../note-create-form/note-create-form';
 import './dashboard.scss';
 
 configure({ adapter: new Adapter() });
