@@ -41,7 +41,7 @@ export default class Dashboard extends React.Component {
           this.state.notes.map((note) => {
             return (
               <li key={note._id}>
-              {note.title} : ${note.price}
+              {note.title} : {note.description}
               </li>
             );
           })
@@ -53,9 +53,9 @@ export default class Dashboard extends React.Component {
   render() {
     return (
       <section className="dashboard">
-        <Note handleAddNote={ this.handleAddNote } />
+        <Note handleAddNote = { this.handleAddNote } />
         { 
-          this.state.error && <h2 className="error">You must enter a title.</h2>
+          this.state.error && <h2 className="error">You must enter a title to the note.</h2>
         }
         { this.handleNotes() }
       </section>
