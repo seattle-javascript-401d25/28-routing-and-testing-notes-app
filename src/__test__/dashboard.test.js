@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  configure, mount, shallow, render 
+  configure, mount, shallow, 
 } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import localStorage from 'jest-localstorage-mock';
@@ -28,18 +28,17 @@ describe('Dashboard testing', () => {
     const mockNotes = [{
       title: 'fake', content: 'A fake note', _id: '1234', createdOn: new Date(),
     }];
-    mountedDashboard.setState({ allNotes: mockNotes });
-    expect(mountedDashboard.state('allNotes')).toEqual(mockNotes);
-    expect(mountedDashboard.state('allNotes')).toHaveLength(1);
-    expect(mountedDashboard.find('p').text()).toEqual('A fake note');
+    mountedDashboard.setState({ allNotes: mockNotes }, () => {
+      expect(mountedDashboard.state('allNotes')).toEqual(mockNotes);
+      expect(mountedDashboard.state('allNotes')).toHaveLength(1);
+    });
   });
 
-  test('For selectable by class .dashboard', () => {
-    expect(shallow(<Dashboard />).is('.dashboard')).toBe(true);
+  test('For selectable by class .note-grid', () => {
+    expect(shallow(<Dashboard />).is('.note-grid')).toBe(true);
   });
 
   test('Mount in DOM', () => {
-    expect(mountedDashboard.find('.dashboard')).toHaveLength(1);
+    expect(mountedDashboard.find('.note-grid')).toHaveLength(1);
   });
-  
 });

@@ -1,7 +1,5 @@
 import React from 'react';
-// import { BrowserRouter, Route, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import NoteEdit from '../note-edit/note-edit';
 
 import './note-item.scss';
 

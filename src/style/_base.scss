@@ -16,17 +16,9 @@ strong { font-weight: bold; }
 
 body {
   background: $color-body-background;
+  background-image: $background-texture;
   font-size: $font-base-size;
   font-family: $font-primary;
-}
-
-#root {
-  min-height: 900px;
-}
-
-blockquote {
-  border-left: $pad solid $color-lightgrey;
-  padding-left: $pad;
 }
 
 @for $i from 6 through 1 {
@@ -75,18 +67,3 @@ button,input[type="submit"] {
     background: $color-darkgrey;
   }
 }
-
-footer {
-  height: 40px;
-  background: #000;
-  border-top: solid 5px #fff;
-  margin-top: 100px;
-}
-
-// lists
-ul,ol,li { margin-left: $pad * 2; }
-li { display: list-item; }
-ul li { list-style: disc; }
-ol li { list-style: decimal; }
-ol ol li , ul ol li { list-style: lower-alpha; }
-ol ul li , ul ul li { list-style: square; }

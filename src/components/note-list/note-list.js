@@ -4,16 +4,10 @@ import NoteItem from '../note-item/note-item';
 import './note-list.scss';
 
 export default class NoteList extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   handleEditNote = (event) => {
     event.preventDefault();
-    console.log('eeee handleEditNote. event.target.name:', event.target.name);
     const mode = event.target.name === 'edit' ? 'edit' : 'delete';
     if (mode === 'delete') {
-      console.log('ddd deleting note', event.target.id);
       return this.props.delNote(event.target.id);
     }
     return (
@@ -22,7 +16,6 @@ export default class NoteList extends React.Component {
   }
 
   render() {
-    console.log('...NoteList props.notes', this.props.notes);
     return (
       this.props.notes.map((note) => {
         return (

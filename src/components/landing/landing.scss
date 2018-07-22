@@ -24,11 +24,13 @@
     padding-top: 0.5em;
   }
 
-  ul {
+  ul, li { 
+    margin-left: $pad * 2; 
     list-style-type: disc;
   }
 
   li {
+    display: list-item;
     list-style: disc;
     padding-top: 0.5em;
   }
