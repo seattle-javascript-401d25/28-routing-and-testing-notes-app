@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NoteItem from '../note-item/note-item';
+import './note-list.scss';
 
 export default class NoteList extends React.Component {
   // constructor(props) {
@@ -26,9 +27,11 @@ export default class NoteList extends React.Component {
       this.props.notes.map((note) => {
         return (
           <div className="note-list" key={note._id}>
-            <NoteItem note={note} />
-            <button id={note._id} name="edit" onClick={this.handleEditNote}>Edit</button>
-            <button id={note._id} name="delete" onClick={this.handleEditNote}>Delete</button>
+            <NoteItem note={note}/>
+            <div className="note-buttons">
+              <button id={note._id} name="edit" onClick={this.handleEditNote}>Edit</button>
+              <button id={note._id} name="delete" onClick={this.handleEditNote}>Delete</button>
+            </div>
           </div>
         );
       })

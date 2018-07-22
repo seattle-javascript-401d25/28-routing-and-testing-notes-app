@@ -17,7 +17,8 @@ export default function App() {
             <nav>
               <ul>
                 <li><Link to="/">About</Link></li>
-                <li><Link to="/dashboard">Notes Dashboard</Link></li>
+                <li><Link to="/dashboard">Notes</Link></li>
+                <li className="create-note"><Link to="/create">New Note</Link></li>
               </ul>
             </nav>
           </header>

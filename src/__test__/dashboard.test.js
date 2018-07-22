@@ -1,5 +1,7 @@
 import React from 'react';
-import { configure, mount } from 'enzyme';
+import {
+  configure, mount, shallow, render 
+} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import localStorage from 'jest-localstorage-mock';
 import Dashboard from '../components/dashboard/dashboard';
@@ -31,4 +33,13 @@ describe('Dashboard testing', () => {
     expect(mountedDashboard.state('allNotes')).toHaveLength(1);
     expect(mountedDashboard.find('p').text()).toEqual('A fake note');
   });
+
+  test('For selectable by class .dashboard', () => {
+    expect(shallow(<Dashboard />).is('.dashboard')).toBe(true);
+  });
+
+  test('Mount in DOM', () => {
+    expect(mountedDashboard.find('.dashboard')).toHaveLength(1);
+  });
+  
 });

@@ -1,8 +1,10 @@
 import React from 'react';
 import uuid from 'uuid/v4';
+import PropTypes from 'prop-types';
 
 import NoteList from '../note-list/note-list';
 import NoteEdit from '../note-edit/note-edit';
+import './dashboard.scss';
 
 export default class Dashboard extends React.Component {
   constructor(props) {
@@ -12,14 +14,17 @@ export default class Dashboard extends React.Component {
       allNotes: localStorage.allNotes ? JSON.parse(localStorage.allNotes) : [],
       note: {},
       error: false,
-      action: null,
+      action: props.action || null,
     };
   }
 
   addNote = (note) => {
     console.log('aaaa addNote', note);
+    if (note.cancelled) {
+      return this.setState({ action: null, cancelled: false });
+    }
     if (note.title === '') {
-      return this.setState({ error: true });
+      return this.setState({ error: true, action: null });
     }
     this.setState({ error: false });
     let { allNotes } = this.state;
@@ -63,20 +68,20 @@ export default class Dashboard extends React.Component {
   }
 
   render() {
+    console.log('!!! dashboard action', this.state.action);
     console.log('!!! dashboard, allNotes', this.state.allNotes);
     return (
-      <div className="dashboard">
-        <div>
-          <button onClick={this.handleCreateNewNote}>Create a New Note</button>
-        </div>
+      <div className="note-grid">
         {console.log('!!! dashboard this.state.action', this.state.action)}
-        <div>
           {this.state.action !== null
             ? <NoteEdit mode={this.state.action} addNote={this.addNote} note={this.state.note}/>
             : <NoteList addNote={this.addNote} delNote={this.handleDeleteNote} editNote={this.handleEditNote} notes={this.state.allNotes} /> 
           }
-        </div>
       </div>
     );
   }
 }
+
+Dashboard.propTypes = {
+  action: PropTypes.string,
+};
