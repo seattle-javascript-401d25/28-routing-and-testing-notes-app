@@ -1,6 +1,6 @@
 import React from 'react';
 import uuid from 'uuid/v4';
-import Note from '../note-create-form/note-create-form';
+import Note from './note-create-form/note-create-form';
 // import './dashboard.scss';
 
 export default class Dashboard extends React.Component {
@@ -25,6 +25,12 @@ export default class Dashboard extends React.Component {
         notes: [...previousState.expenses, note],
         error: null,
       };
+    });
+  }
+
+  handleRemoveNote = (note) => {
+    this.setState({
+      notes: this.state.notes.filter((__dirname, i) => i !== note),
     });
   }
 
