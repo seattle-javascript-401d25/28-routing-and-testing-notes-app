@@ -8,7 +8,7 @@ export default class Dashboard extends React.Component {
     super(props);
 
     this.state = {
-      expenses: [],
+      notes: [],
       error: null,
     };
   }
@@ -22,7 +22,7 @@ export default class Dashboard extends React.Component {
     note._id = uuid();
     return this.setState((previousState) => {
       return {
-        notes: [...previousState.expenses, note],
+        notes: [...previousState.notes, note],
         error: null,
       };
     });
@@ -38,10 +38,10 @@ export default class Dashboard extends React.Component {
     return (
       <ul className = "container">
         {
-          this.state.notes.map((expense) => {
+          this.state.notes.map((note) => {
             return (
-              <li key={expense._id}>
-              {expense.title} : ${expense.price}
+              <li key={note._id}>
+              {note.title} : ${note.price}
               </li>
             );
           })
