@@ -28,6 +28,14 @@ export default class Dashboard extends React.Component {
     });
   }
 
+  handleRemoveNote = (noteToRemove) => {
+    this.setState((previousState) => {
+      return {
+        notes: previousState.notes.filter(note => note._id !== noteToRemove._id),
+      };
+    });
+  }
+
  
   handleNotesList = () => {
     return (
