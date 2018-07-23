@@ -1,5 +1,5 @@
 {
-  "name": "28-budget-tracker-app",
+  "name": "28-note-creator-app",
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__test__/mocks/styleMock.js",
@@ -30,12 +30,10 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^1.0.0",
-    "cypress": "^3.0.2",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^5.1.0",
     "eslint-config-airbnb-base": "^13.0.0",
-    "eslint-plugin-cypress": "^2.0.1",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jest": "^21.17.0",
     "eslint-plugin-react": "^7.10.0",
