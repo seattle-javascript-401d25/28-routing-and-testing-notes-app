@@ -36,7 +36,7 @@ export default class Dashboard extends React.Component {
           this.state.notes.map((note) => {
             return (
               <li key={note._id}>
-                {note.title} : ${expense.price}
+                {note.title} : ${note.price}
               </li>
               
             );
@@ -45,13 +45,12 @@ export default class Dashboard extends React.Component {
       </ul>
     );
   }
-
  
 
   render() {
     return (
       <section className="dashboard">
-        <ExpenseForm handleAddNote={this.handleAddNote} />
+        <NoteCreateForm handleAddNote={this.handleAddNote} />
         {
           this.state.error && <h2 className="error">You must enter a title.</h2>
         }

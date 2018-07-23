@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import Dashboard from '../dashboard/dashboard';
-import './app.scss';
+import from './app.scss';
 ;
 
 // BrowserRouter wraps our app so we can enable client side routing
