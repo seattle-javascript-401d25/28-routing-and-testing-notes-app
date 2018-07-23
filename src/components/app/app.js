@@ -2,8 +2,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import Dashboard from '../dashboard/dashboard';
-import from './app.scss';
-;
+import './app.scss';
+
 
 // BrowserRouter wraps our app so we can enable client side routing
 // Link is component that is basically an anchor tag under the hood
@@ -38,6 +38,6 @@ export default class App extends React.Component {
           </div>
         </BrowserRouter>
       </div>
-    )
+    );
   }
 }
