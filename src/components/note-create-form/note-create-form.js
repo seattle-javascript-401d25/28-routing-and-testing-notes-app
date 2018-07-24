@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 
 const defaultState = {
   title: '',
-  price: 0,
+  body: 'body',
 };
 
-export default class ExpenseForm extends React.Component {
+export default class NoteForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = defaultState;
+    this.state = props.note ? props.note : defaultState;
   }
 
   handleSubmit = (e) => {
-    event.preventDefault();
-    this.props.handleAddExpense(this.state);
+    e.preventDefault();
+    this.props.handleComplete(this.state);
     this.setState(defaultState);
   }
 
@@ -26,6 +26,7 @@ export default class ExpenseForm extends React.Component {
   }
 
   render() {
+    const buttonText = this.props.note ? 'Update Note' : 'Create Note';
     return (
       <form onSubmit={ this.handleSubmit }>
         <input
@@ -34,20 +35,20 @@ export default class ExpenseForm extends React.Component {
           placeholder="title"
           value={ this.state.title }
           onChange={ this.handleChange }
-        />
+        />Note
         <input
-          type="number"
-          name="price"
-          placeholder="price"
-          value={ this.state.price }
+          type="string"
+          name="body"
+          placeholder="body"
+          value={ this.state.body }
           onChange={ this.handleChange }
         />
-        <button type="submit">Create Expense</button>
+        <button type="submit">Create Note</button>
       </form>
     );
   }
 }
 
-ExpenseForm.PropTypes = {
-  handleAddExpense: PropTypes.func,
+NoteForm.propTypes = {
+  handleComplete: PropTypes.func,
 };
