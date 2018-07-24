@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './note-create-form.scss';
+
 const defaultState = {
   title: '',
   price: 0,

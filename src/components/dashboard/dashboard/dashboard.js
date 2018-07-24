@@ -1,7 +1,7 @@
 import React from 'react';
 import uuid from 'uuid/v4';
-import Note from './note-create-form/note-create-form';
-// import './dashboard.scss';
+import Note from '../note-create-form/note-create-form';
+import './dashboard.scss';
 
 export default class Dashboard extends React.Component {
   constructor(props) {
@@ -58,7 +58,6 @@ export default class Dashboard extends React.Component {
           this.state.error && <h2 className="error">You must enter a title to the note.</h2>
         }
         { this.handleNotes() }
-        <p>Note added!</p>
       </section>
     );
   }
