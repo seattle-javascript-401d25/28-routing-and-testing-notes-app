@@ -1,6 +1,6 @@
 import React from 'react';
 import uuid from 'uuid/v4';
-import Note from '../note-create-form/note-create-form';
+import NoteForm from '../note-form/note-form';
 import './dashboard.scss';
 
 export default class Dashboard extends React.Component {
@@ -41,7 +41,10 @@ export default class Dashboard extends React.Component {
           this.state.notes.map((note) => {
             return (
               <li key={note._id}>
-              {note.title} : {note.description}
+                <NoteForm
+                  note={note}
+                  handleRemoveNote={this.handleRemoveNote}
+                  />
               </li>
             );
           })
@@ -53,7 +56,7 @@ export default class Dashboard extends React.Component {
   render() {
     return (
       <section className="dashboard">
-        <Note handleAddNote = { this.handleAddNote } />
+        <NoteForm handleAddNote = { this.handleAddNote } />
         { 
           this.state.error && <h2 className="error">You must enter a title to the note.</h2>
         }

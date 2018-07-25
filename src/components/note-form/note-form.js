@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './note-create-form.scss';
+import './note-form.scss';
 
 const defaultState = {
   title: '',
   price: 0,
 };
 
-export default class Note extends React.Component {
+export default class NoteForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = defaultState;
@@ -50,6 +50,6 @@ export default class Note extends React.Component {
   }
 }
 
-Note.propTypes = {
+NoteForm.propTypes = {
   handleAddNote: PropTypes.func,
 };
