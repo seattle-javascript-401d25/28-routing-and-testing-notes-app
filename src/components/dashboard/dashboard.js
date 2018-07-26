@@ -2,6 +2,7 @@ import React from 'react';
 import uuid from 'uuid/v4';
 import NoteForm from '../note-form/note-form';
 import './dashboard.scss';
+import NoteItem from '../note-item/note-item';
 
 export default class Dashboard extends React.Component {
   constructor(props) {
@@ -28,9 +29,11 @@ export default class Dashboard extends React.Component {
     });
   }
 
-  handleRemoveNote = (note) => {
-    this.setState({
-      notes: this.state.notes.filter((__dirname, i) => i !== note),
+  handleRemoveNote = (noteToRemove) => {
+    this.setState((previousState) => {
+      return {
+        notes: previousState.notes.filter(note => note._id !== noteToRemove._id),
+      };
     });
   }
 
@@ -41,7 +44,7 @@ export default class Dashboard extends React.Component {
           this.state.notes.map((note) => {
             return (
               <li key={note._id}>
-                <NoteForm
+                <NoteItem
                   note={note}
                   handleRemoveNote={this.handleRemoveNote}
                   />
