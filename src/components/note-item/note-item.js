@@ -12,7 +12,7 @@ export default class NoteItem extends React.Component {
       <strong className="note-title">{note.title}</strong>
       <p className="note-description">{note.description}</p>
       <button
-          className="note-buttons"
+          className="delete-button"
           onClick = {() => handleRemoveNote(note)}>
           Delete
       </button>

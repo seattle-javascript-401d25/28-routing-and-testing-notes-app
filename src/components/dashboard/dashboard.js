@@ -39,7 +39,7 @@ export default class Dashboard extends React.Component {
 
   handleNotes = () => {
     return (
-      <ul className = "container">
+      <ul className = "note-list">
         {
           this.state.notes.map((note) => {
             return (
