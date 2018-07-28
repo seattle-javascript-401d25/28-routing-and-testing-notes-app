@@ -5,7 +5,8 @@ import './note-form.scss';
 
 const defaultState = {
   title: '',
-  price: 0,
+  description: '',
+  editing: false,
 };
 
 export default class NoteForm extends React.Component {
@@ -28,14 +29,18 @@ export default class NoteForm extends React.Component {
   }
 
   render() {
+    const createOrUpdate = this.props.note ? 'Update Note' : 'Create Note';
+    const title = this.props.note ? 'updateTitle' : 'title';
+    const content = this.props.note ? 'updateContent' : 'content';
     return (
-      <form onSubmit={ this.handleSubmit }>
+      <form onSubmit={ this.handleSubmit } data-cy="note-form">
         <input 
           type="text"
           name="title"
           placeholder="title"
           value={ this.state.title }
           onChange={ this.handleChange }
+          data-cy={title}
         />
         <input 
           type="text"
@@ -43,8 +48,9 @@ export default class NoteForm extends React.Component {
           placeholder="description"
           value={ this.state.description }
           onChange={ this.handleChange }
+          data-cy={content}
         />
-        <button type="submit">Create Note</button>
+        <button type="submit" data-cy="note-form-submit">{createOrUpdate}</button>
       </form>
     );
   }
@@ -52,4 +58,6 @@ export default class NoteForm extends React.Component {
 
 NoteForm.propTypes = {
   handleAddNote: PropTypes.func,
+  handleRemoveNote: PropTypes.func,
+  note: PropTypes.object,
 };
