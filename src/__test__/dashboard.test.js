@@ -24,6 +24,5 @@ describe('Dashboard testing', () => {
     mountedDashboard.setState({ notes: mockNotes });
     expect(mountedDashboard.state('notes')).toEqual(mockNotes);
     expect(mountedDashboard.state('notes')).toHaveLength(1);
-    expect(mountedDashboard.find('p').text()).toEqual('fake description');
   });
 });

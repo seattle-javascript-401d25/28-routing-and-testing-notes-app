@@ -1,0 +1,25 @@
+html {
+  background-color: rgb(106, 140, 106);
+}
+
+form {
+  background-color: rgb(76, 76, 87);
+  height: 3em;
+}
+
+form > input, button {
+  font-family: fantasy;
+  font-size: 14px;
+  position: relative;
+  top: .75em;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.note-list > li {
+  float: left;
+  list-style-type: none;
+  margin-left: .5em;
+  margin-right: .5em;
+}
+

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import Dashboard from '../dashboard/dashboard';
+
 import './app.scss';
 
 
@@ -9,9 +10,9 @@ export default class App extends React.Component {
     return (
       <div className="app">
         <BrowserRouter>
-          <div>
+          <div className="note-container">
             <header>
-              <h1>Note Creator</h1>
+              <h1>Medieval Note Creator</h1>
               <nav>
                 <ul>
                   <li><Link to="/">Home</Link></li>
@@ -22,7 +23,7 @@ export default class App extends React.Component {
             <Route 
               exact
               path="/"
-              component={() => <h1>Yo estoy tu HOME pagina</h1>}
+              component={() => <h4>You must only create notes that pertain to medieval times</h4>}
             />
             <Route 
               exact
