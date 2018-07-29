@@ -1,0 +1,40 @@
+.note-item {
+  box-shadow: 0px 0px 5px 2px rgb(57, 85, 57);
+  border: 1px solid rgb(52, 52, 52);
+  width: 12em;
+  height: 9.5em;
+}
+
+.note-item-container ul li {
+  display: none;
+}
+
+.note-title {
+  display: block;
+  font-size: 18px;
+  overflow: scroll;
+  margin-top: .5em;
+}
+
+.note-description {
+  cursor: pointer;
+  overflow: scroll;
+  word-wrap: break-word;
+  height: 3em;
+  width: 9em;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  bottom: .5em;
+  margin-bottom: -10px;
+}
+
+.delete-button {
+  background-color: white;
+  color: rgb(202, 55, 55);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px;
+  height: 2.7em;
+  width: 6.5em;
+}
