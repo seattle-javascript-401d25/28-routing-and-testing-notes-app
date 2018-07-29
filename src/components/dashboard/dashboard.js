@@ -1,7 +1,8 @@
 import React from 'react';
 import uuid from 'uuid/v4';
-import Note from '../note-create-form/note-create-form';
+import NoteForm from '../note-form/note-form';
 import './dashboard.scss';
+import NoteItem from '../note-item/note-item';
 
 export default class Dashboard extends React.Component {
   constructor(props) {
@@ -28,20 +29,34 @@ export default class Dashboard extends React.Component {
     });
   }
 
-  handleRemoveNote = (note) => {
-    this.setState({
-      notes: this.state.notes.filter((__dirname, i) => i !== note),
+  handleRemoveNote = (noteToRemove) => {
+    this.setState((previousState) => {
+      return {
+        notes: previousState.notes.filter(note => note._id !== noteToRemove._id),
+      };
+    });
+  }
+
+  handleUpdateNote = (noteToUpdate) => {
+    return this.setState((previousState) => {
+      return {
+        notes: previousState.notes.map(note => (note._id === noteToUpdate._id ? noteToUpdate : note)),
+      };
     });
   }
 
   handleNotes = () => {
     return (
-      <ul className = "container">
+      <ul className = "note-list">
         {
           this.state.notes.map((note) => {
             return (
               <li key={note._id}>
-              {note.title} : {note.description}
+                <NoteItem
+                  note={note}
+                  handleRemoveNote={this.handleRemoveNote}
+                  handleUpdateNote={this.handleUpdateNote}
+                  />
               </li>
             );
           })
@@ -53,7 +68,7 @@ export default class Dashboard extends React.Component {
   render() {
     return (
       <section className="dashboard">
-        <Note handleAddNote = { this.handleAddNote } />
+        <NoteForm handleAddNote = { this.handleAddNote } />
         { 
           this.state.error && <h2 className="error">You must enter a title to the note.</h2>
         }
