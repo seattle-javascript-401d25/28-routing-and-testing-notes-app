@@ -7,16 +7,16 @@ import './note-item.scss';
 
 export default class NoteItem extends React.Component {
   render() {
-    const { note, handleRemoveNote, handleUpdateNote} = this.props; /*eslint-disable-line*/
-    const showModal = () => handleUpdateNote({ ...note, editing: true}); /*eslint-disable-line*/
-    const hideModal = () => handleUpdateNote({ ...note, editing: false}); /*eslint-disable-line*/
+    const { note, handleRemoveNote, handleUpdateNote } = this.props; /*eslint-disable-line*/
+    const showModal = () => handleUpdateNote({ ...note, editing: true });
+    const hideModal = () => handleUpdateNote({ ...note, editing: false });
     const updateAndClose = (updatedNote) => {
       return handleUpdateNote({ ...updatedNote, editing: false });
     };
     return (
       <div className="note-item" data-cy="note-item" onClick={showModal}>
       <strong className="note-title">{note.title}</strong>
-      <p className="note-content">{note.content}</p>
+      <p className="note-description">{note.description}</p>
       <button
           className="note-buttons"
           onClick = {() => handleRemoveNote(note)} 

@@ -55,6 +55,7 @@ export default class Dashboard extends React.Component {
                 <NoteItem
                   note={note}
                   handleRemoveNote={this.handleRemoveNote}
+                  handleUpdateNote={this.handleUpdateNote}
                   />
               </li>
             );
