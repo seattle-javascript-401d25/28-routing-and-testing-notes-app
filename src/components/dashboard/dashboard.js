@@ -24,7 +24,7 @@ export default class Dashboard extends React.Component {
     note._id = uuid();
     return this.setState((previousState) => {
       return {
-        notes: [...previousState.notes, note], 
+        note: [...previousState.note, note], 
         error: null,
       };
     });
@@ -33,7 +33,7 @@ export default class Dashboard extends React.Component {
   handleRemoveNote = (noteToRemove) => {
     this.setState((previousState) => {
       return {
-        notes: previousState.notes.filter(note => note._id !== noteToRemove._id),
+        note: previousState.note.filter(note => note._id !== noteToRemove._id),
       };
     });
   }
@@ -41,13 +41,13 @@ export default class Dashboard extends React.Component {
   handleUpdateNote = (noteToUpdate) => {
     return this.setState((previousState) => {
       return {
-        notes: previousState.notes.map(note => (note._id === noteToUpdate._id ? noteToUpdate : note)),
+        note: previousState.note.map(note => (note._id === noteToUpdate._id ? noteToUpdate : note)),
       };
     });
   }
 
   handleTotalPrice = () => {
-    return this.state.notes.reduce((sum, note) => {
+    return this.state.note.reduce((sum, note) => {
       return sum + Number(note.price); 
     }, 0);
   }
@@ -56,7 +56,7 @@ export default class Dashboard extends React.Component {
     return (
       <ul>
         {
-          this.state.notes.map((note) => {
+          this.state.note.map((note) => {
             return (
               <li key={note._id}>
                 <NoteItem
